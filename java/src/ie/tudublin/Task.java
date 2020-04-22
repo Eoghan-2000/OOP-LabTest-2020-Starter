@@ -3,10 +3,12 @@ package ie.tudublin;
 import processing.data.TableRow;
 
 public class Task {
+    //attributes of the task object
     private String task;
     private int start;
     private int end;
 
+    //constructors
     public Task(String task, int start, int end)
     {
         this.task = task;
@@ -19,6 +21,7 @@ public class Task {
         this(tr.getString("Task"), tr.getInt("Start"),tr.getInt("End"));
     }
 
+    //Getters and setters
     public String getTask() {
         return task;
     }
@@ -42,7 +45,7 @@ public class Task {
     public void setEnd(int end) {
         this.end = end;
     }
-
+    //toString method for printing task object
     @Override
     public String toString() {
         return "Task [end=" + end + ", start=" + start + ", task=" + task + "]";
