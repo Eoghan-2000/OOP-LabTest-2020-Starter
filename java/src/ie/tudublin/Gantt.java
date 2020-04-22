@@ -9,7 +9,6 @@ public class Gantt extends PApplet
 {	
 	ArrayList<Task> tasks = new ArrayList<Task>();
 
-	
 	float taskBorder;
 	float gantBorder;
 	
@@ -49,9 +48,10 @@ public class Gantt extends PApplet
 		int y=50;
 		int space=50;
 		float gantSize=30;
-		int it=0;
+		int tIteration=0;
 		float blocksize;
 		float bWidth;
+		//prints the gant chart
 		for(int i=1;i<gantSize+1;i++)
 		{
 			fill(255);
@@ -59,17 +59,18 @@ public class Gantt extends PApplet
 			stroke(155);
 			line(map(i,0,gantSize,gantBorder,end),15,map(i,0,gantSize,gantBorder,end),height-80);
 		}
+		//prints the tasks and their poistion on the chart
 		for(Task ts:tasks)
 		{
 			bWidth=ts.getEnd()-ts.getStart();
 			noStroke();
 			fill(255);
 			text(ts.getTask(),taskBorder,y);
-			fill(map(it,0,tasks.size(),0,255),255,255);
+			fill(map(tIteration,0,tasks.size(),0,255),255,255);
 			blocksize=map(bWidth,0,gantSize,0,width-gantBorder);
 			rect(map(ts.getStart(),0,gantSize,gantBorder,end), y-10, blocksize, bh);
 			y+=space;
-			it++; 
+			tIteration++; 
 		}
 		
 	}
