@@ -48,9 +48,10 @@ public class Gantt extends PApplet
 	{
 		int y=50;
 		int space=50;
-		int gantSize=30;
+		float gantSize=30;
 		int it=0;
 		float blocksize;
+		float bWidth;
 		for(int i=1;i<gantSize+1;i++)
 		{
 			fill(255);
@@ -60,11 +61,13 @@ public class Gantt extends PApplet
 		}
 		for(Task ts:tasks)
 		{
+			bWidth=ts.getEnd()-ts.getStart();
+			noStroke();
 			fill(255);
 			text(ts.getTask(),taskBorder,y);
 			fill(map(it,0,tasks.size(),0,255),255,255);
-			blocksize=map(ts.getEnd()-ts.getStart(),0,gantSize,0,end);
-			rect(map(ts.getStart(),0,gantSize,gantBorder,end), y-10, blocksize , bh);
+			blocksize=map(bWidth,0,gantSize,0,width-gantBorder);
+			rect(map(ts.getStart(),0,gantSize,gantBorder,end), y-10, blocksize, bh);
 			y+=space;
 			it++; 
 		}

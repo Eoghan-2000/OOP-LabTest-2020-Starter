@@ -5,8 +5,8 @@ import processing.data.TableRow;
 public class Task {
     //attributes of the task object
     private String task;
-    private int start;
-    private int end;
+    private float start;
+    private float end;
 
     //constructors
     public Task(String task, int start, int end)
@@ -30,19 +30,19 @@ public class Task {
         this.task = task;
     }
 
-    public int getStart() {
+    public float getStart() {
         return start;
     }
 
-    public void setStart(int start) {
+    public void setStart(float start) {
         this.start = start;
     }
 
-    public int getEnd() {
+    public float getEnd() {
         return end;
     }
 
-    public void setEnd(int end) {
+    public void setEnd(float end) {
         this.end = end;
     }
     //toString method for printing task object
