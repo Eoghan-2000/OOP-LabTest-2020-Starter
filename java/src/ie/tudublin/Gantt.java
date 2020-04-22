@@ -13,7 +13,8 @@ public class Gantt extends PApplet
 	float taskBorder;
 	float gantBorder;
 	
-	float h;
+	float bh;
+	float end;
 	public void settings()
 	{
 		size(800, 600);
@@ -21,7 +22,8 @@ public class Gantt extends PApplet
 		taskBorder = width * 0.05f;
 		gantBorder = width * 0.2f;
 
-		h = 20;
+		bh = 20;
+		end=width-20;
 	}
 
 	public void loadTasks()
@@ -48,21 +50,23 @@ public class Gantt extends PApplet
 		int space=50;
 		int gantSize=30;
 		int it=0;
+		float blocksize;
 		for(int i=1;i<gantSize+1;i++)
 		{
 			fill(255);
-			text(i,map(i,1,gantSize+1,gantBorder,width),10);
+			text(i,map(i,0,gantSize,gantBorder,end),10);
 			stroke(155);
-			line(map(i,1,gantSize+1,gantBorder,width)+5,15,map(i,1,gantSize+1,gantBorder,width)+5,height-80);
+			line(map(i,0,gantSize,gantBorder,end),15,map(i,0,gantSize,gantBorder,end),height-20);
 		}
 		for(Task ts:tasks)
 		{
 			fill(255);
 			text(ts.getTask(),taskBorder,y);
 			fill(map(it,0,tasks.size(),0,255),255,255);
-			rect(map(ts.getStart(),1,gantSize+1,gantBorder,width), y-10, map((ts.getEnd() - ts.getStart()),1,gantSize,gantSize,width) , h);
+			blocksize=floor(map(ts.getEnd()-ts.getStart(),0,gantSize,0,end));
+			rect(map(ts.getStart(),0,gantSize,gantBorder,end), y-10, blocksize , bh);
 			y+=space;
-			it++;
+			it++; 
 		}
 		
 	}
