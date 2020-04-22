@@ -56,14 +56,14 @@ public class Gantt extends PApplet
 			fill(255);
 			text(i,map(i,0,gantSize,gantBorder,end),10);
 			stroke(155);
-			line(map(i,0,gantSize,gantBorder,end),15,map(i,0,gantSize,gantBorder,end),height-20);
+			line(map(i,0,gantSize,gantBorder,end),15,map(i,0,gantSize,gantBorder,end),height-80);
 		}
 		for(Task ts:tasks)
 		{
 			fill(255);
 			text(ts.getTask(),taskBorder,y);
 			fill(map(it,0,tasks.size(),0,255),255,255);
-			blocksize=floor(map(ts.getEnd()-ts.getStart(),0,gantSize,0,end));
+			blocksize=map(ts.getEnd()-ts.getStart(),0,gantSize,0,end);
 			rect(map(ts.getStart(),0,gantSize,gantBorder,end), y-10, blocksize , bh);
 			y+=space;
 			it++; 
